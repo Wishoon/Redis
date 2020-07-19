@@ -85,7 +85,7 @@
     String data2Key = "Data2";
 			
     hash.putAll(data1Key, data1);
-    hash.putAll(data2Keyy, data2);
+    hash.putAll(data2Key, data2);
     ```
   - List(추후 수정. R임)
     - Redis의 list는 일반적인 linked list의 특징을 가지고 있다. 즉, 노드를 하나 추가할때 동일한 시간이 소요
@@ -99,7 +99,7 @@
 	@Resource(name="redisTemplate")
 	private ListOperations<String, String> listOps;
 	
-	public List<VO> getList() {
+	public List<Vo> getList() {
 		RedisOperations<String, String> reids = listOps.getOperations();
 		
 		Set<String> keys = redis.keys("key");
