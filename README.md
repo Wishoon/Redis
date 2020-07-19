@@ -12,11 +12,19 @@
   - String
     - 레디스의 String은 키와 연결할 수 있는 가장 간단한 유형의 값
     - 모든 종류와 문자열을 정리할 수 있다.
+    - 방법 1. ValueOperations 사용
     ```java
+    RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) ctx.getBean("redisTemplate");
     ValueOperations<String, Object> values = redisTemplate.opsForValue();
 
     // set1 (Key와 Value로 구성)
     values.set("Key 값", "data");
-		// set2 (Key와 class를 이용해 value를 구성)
-		values.set("Key 값", new User("data1", "data2")); ```
+    // set2 (Key와 class를 이용해 value를 구성)
+    values.set("Key 값", new User("data1", "data2")); 
+    ```
+    - 방법 2. ValueOperations 없이 사용
+    ```java
+    RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) ctx.getBean("redisTemplate");
     
+    redisTemplate.opsForValue().set("Key", new User("data1", "data2));
+    ```
