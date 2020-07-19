@@ -10,8 +10,31 @@
  
 3. 기본적인 스프링에서의 레디스 설정
   - Reids용 설정클래스
-    - 
-  
+    - Java Config
+    ```java
+    @Configuration
+    public class RedisConfig {
+
+	 @Bean
+	 public JedisConnectionFactory jedisConnectionFactory() {
+
+	  JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+	  jedisConnectionFactory.setHostName("192.168.1.10");
+	  jedisConnectionFactory.setPort(6379);
+	  jedisConnectionFactory.setTimeout(0);
+	  jedisConnectionFactory.setUsePool(true);
+
+	  return jedisConnectionFactory;
+	 }
+
+	@Bean
+	public StringRedisTemplate redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+	  StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+	  stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
+
+	  return stringRedisTemplate;
+	}
+    }
   
 4. 레디스의 자료구조(+ Create)
   - String
