@@ -10,7 +10,7 @@
  
 3. 기본적인 스프링에서의 레디스 설정
 
-4. 레디스의 자료구조
+4. 레디스의 자료구조(+ Create)
   - String
     - 레디스의 String은 키와 연결할 수 있는 가장 간단한 유형의 값
     - 모든 종류와 문자열을 정리할 수 있다.
@@ -42,22 +42,22 @@
     ``` java
     RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>)ctx.getBean("redisTemplate");
 			
-		Map<String, String> data1 = new HashMap<String, String>();
-		data1.put("name", "Bob");
-		data1.put("age", "26");
-		data1.put("id", "02");
+    Map<String, String> data1 = new HashMap<String, String>();
+    data1.put("name", "Bob");
+    data1.put("age", "26");
+    data1.put("id", "02");
 			
-		Map<String, String> empJohnMap = new HashMap<String, String>();
-		data2.put("name", "John");
-		data2.put("age", "16");
-		data2.put("id", "03");
+    Map<String, String> empJohnMap = new HashMap<String, String>();
+    data2.put("name", "John");
+    data2.put("age", "16");
+    data2.put("id", "03");
 			
-		// Hash Operation
+    // Hash Operation
+	
+    HashOperations<String, String, String> hash = redisTemplate.opsForHash();
+    String data1Key = "Data1";
+    String data2Key = "Data2";
 			
-		HashOperations<String, String, String> hash = redisTemplate.opsForHash();
-		String data1Key = "Data1";
-		String data2Key = "Data2";
-			
-		hash.putAll(data1Key, data1);
-		hash.putAll(data2Keyy, data2);
+    hash.putAll(data1Key, data1);
+    hash.putAll(data2Keyy, data2);
     ```
