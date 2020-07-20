@@ -33,12 +33,14 @@
 
 		  return jedisConnectionFactory;
 		 }
-
+		 
+		 // 스프링은 RedisTemplate 클래스를 제공하는데, 이는 Redis 데이터에 쉽게 접근하기 위한 코드를 제공합니다.
 		 @Bean
 		 public StringRedisTemplate redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
 		   StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+		   // redisTemplate을 jedisConnectionFactory와 연결 하고, 주어진 객체와 Redis 데이터간의 직렬화, 역직렬화를 자동으로 수행 
 		   stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
-
+		  
 		   return stringRedisTemplate;
 		 }
     }
