@@ -174,6 +174,25 @@
 				ctx.close();
 			}
 		}
+  - Delete
+  	- 방법 1.
+	``` java
+	public void delete(String key) {
+		ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(SpringRedisConfig.class);
+		try {
+			@SuppressWarnings("unchecked")
+			RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>)ctx.getBean("redisTemplate");
+
+			redisTemplate.delete(key);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			ctx.close();
+		}
+	}
+	```
 		
 		
 		
