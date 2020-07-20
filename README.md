@@ -164,8 +164,8 @@
 				RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>)ctx.getBean("redisTemplate");
 
 				User result = new User();
-				result.setId((String)redisTemplate.opsForHash().get(key, "name"));
-				System.out.println(result.getId());
+				result.setName((String)redisTemplate.opsForHash().get(key, "name"));
+				System.out.println(result.getName());
 			}
 			catch(Exception e) {
 				e.printStackTrace();
