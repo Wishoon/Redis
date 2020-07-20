@@ -109,7 +109,7 @@
 	    - 특정 값이나 인덱스로 데이터를 찾거나 삭제
   - Read	   
 	  - List
-	    - 방법 1. ListOperations 사용
+	    - 방법 1. ListOperations 사용 (현재 에러 발생)
 	    ``` java
 	    public class RedisService {
 
