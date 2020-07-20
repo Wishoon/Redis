@@ -22,25 +22,25 @@
     @Configuration
     public class RedisConfig {
 
-	 @Bean
-	 public JedisConnectionFactory jedisConnectionFactory() {
+		 @Bean
+		 public JedisConnectionFactory jedisConnectionFactory() {
 
-	  JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
-	  jedisConnectionFactory.setHostName("192.168.1.10");
-	  jedisConnectionFactory.setPort(6379);
-	  jedisConnectionFactory.setTimeout(0);
-	  jedisConnectionFactory.setUsePool(true);
+		  JedisConnectionFactory jedisConnectionFactory = new JedisConnectionFactory();
+		  jedisConnectionFactory.setHostName("192.168.1.10");
+		  jedisConnectionFactory.setPort(6379);
+		  jedisConnectionFactory.setTimeout(0);
+		  jedisConnectionFactory.setUsePool(true);
 
-	  return jedisConnectionFactory;
-	 }
+		  return jedisConnectionFactory;
+		 }
 
-	@Bean
-	public StringRedisTemplate redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
-	  StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-	  stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
+		 @Bean
+		 public StringRedisTemplate redisTemplate(JedisConnectionFactory jedisConnectionFactory) {
+		   StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
+		   stringRedisTemplate.setConnectionFactory(jedisConnectionFactory);
 
-	  return stringRedisTemplate;
-	}
+		   return stringRedisTemplate;
+		 }
     }
   
 4. 레디스의 자료구조
@@ -139,6 +139,7 @@
 					list.add(vo);
 				}
 			}
+		}
 	    ```
     
 		
