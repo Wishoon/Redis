@@ -7,6 +7,13 @@
 2. Collection의 중요성
   - 레디스는 'In-Memory' 데이터베이스. 즉, 데이터를 메모리에 저장하고 조회한다.
   - 다양한 자료구조를 통해 'Key-Value' 형태로 저장 -> '개발의 편의성과 난이도 하락'
+  - Redis는 자료구조가 'Atomic' 하기 때문에 'Race Condition'을 피할 수 있음.
+  - Reids 사용처
+  	- Remote Data Store(A, B, C에서 데이터를 공유하고 싶을때)
+  	- 인증 토큰 등을 저장
+	- 랭킹
+	- 유저 API limit
+	
  
 3. 기본적인 스프링에서의 레디스 설정
   - Reids용 설정클래스
@@ -59,6 +66,7 @@
 	    ```
 	  - Set
 	    - Value가 Set 자료구조가 되므로, 하나의 Key 값에 여러 값을 Set 자료구조를 통해 저장가능
+	    - 중복 제거, 순서 없음, find가 빠르다.
 	    - 방법 1. SetOperations 사용
 	    ```java
 	    RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) ctx.getBean("redisTemplate");
