@@ -109,6 +109,22 @@
 			Iterator<String> iter = keys.iterator();
 
 			List<Vo> list = new ArrayList<Vo>();
+			
+			while(iter.hasNext()) {
+				String key = iter.next().toString();
+				int size = (int)(long)redis.opsForList().size(key);
+				
+				for(int i=0; i<size; i++){
+					Vo vo = new Vo();
+					String[] value = redis.opsForList().leftPop(key).split("_");
+					
+					vo.setName(key);
+					vo.setValue(value[0]);
+					vo.setTime(value[1]);
+					
+					list.add(vo);
+				}
+			}
 	    ```
     
 		
