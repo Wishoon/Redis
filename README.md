@@ -61,6 +61,12 @@
 	    - Value가 Set 자료구조가 되므로, 하나의 Key 값에 여러 값을 Set 자료구조를 통해 저장가능
 	    - 방법 1. SetOperations 사용
 	    ```java
+	    RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>) ctx.getBean("redisTemplate");
+	    
+	    SetOperation<String, Object> setlist = redisTemplate.opsForSet();
+	    
+	    setList.add("key", "value");
+	    	    
 	    ```
 	  - Hash
 	    - Value가 Map 자료구조와 같은 Key/Value 형태가 됨
