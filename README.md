@@ -143,5 +143,37 @@
 			}
 		}
 	    ```
-    
+	  - Hash
+	  	- 방법 1. 
+		``` java
+		// Controller
+	   	@GetMapping("/select/{keys}")
+		public String select(@PathVariable("keys") final String keys){
+			SpringRedisExample ex = new SpringRedisExample();
+			ex.select(keys);
+
+			return "home";
+		}
+		```
+		``` java
+		// RedisExample.class
+		public void select(String key) {
+			ConfigurableApplicationContext ctx = new AnnotationConfigApplicationContext(SpringRedisConfig.class);
+			try {
+				@SuppressWarnings("unchecked")
+				RedisTemplate<String, Object> redisTemplate = (RedisTemplate<String, Object>)ctx.getBean("redisTemplate");
+
+				User result = new User();
+				result.setId((String)redisTemplate.opsForHash().get(key, "name"));
+				System.out.println(result.getId());
+			}
+			catch(Exception e) {
+				e.printStackTrace();
+			}
+			finally {
+				ctx.close();
+			}
+		}
+		
+		
 		
